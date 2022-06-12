@@ -1,5 +1,8 @@
 package br.com.foursys.api.resources;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.foursys.api.dto.UserDTO;
+import br.com.foursys.api.model.User;
 import br.com.foursys.api.service.UserService;
 
 @RestController
@@ -25,6 +29,12 @@ public class UserResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable Integer id){
 		return ResponseEntity.ok().body(mapper.map(service.findById(id), UserDTO.class));
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<UserDTO>> findAll() {
+		List<UserDTO> listDTO = service.findAll().stream().map(x -> mapper.map(x, UserDTO.class)).collect(Collectors.toList());
+		return ResponseEntity.ok().body(listDTO);
 	}
 	
 }
