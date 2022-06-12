@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import br.com.foursys.api.model.User;
 import br.com.foursys.api.repository.UserRepository;
 import br.com.foursys.api.service.UserService;
+import br.com.foursys.api.service.exceptions.ObjectNotFoundException;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -18,7 +19,7 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User findById(Integer id) {
 		Optional<User> obj = repository.findById(id);
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 	}
 
 }
