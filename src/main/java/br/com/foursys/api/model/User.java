@@ -1,4 +1,4 @@
-package br.com.foursys.api;
+package br.com.foursys.api.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

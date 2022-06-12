@@ -3,6 +3,8 @@ package br.com.foursys.api;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import br.com.foursys.api.model.User;
+
 @SpringBootApplication
 public class ApiApplication {
 
