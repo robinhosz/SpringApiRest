@@ -3,7 +3,7 @@ package br.com.foursys.api.service.impl;
 import br.com.foursys.api.dto.UserDTO;
 import br.com.foursys.api.model.User;
 import br.com.foursys.api.repository.UserRepository;
-import br.com.foursys.api.service.exceptions.DataIntegratyViolationException;
+import br.com.foursys.api.service.exceptions.DataIntegrityViolationException;
 import br.com.foursys.api.service.exceptions.ObjectNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -118,7 +118,7 @@ class UserServiceImplTest {
             optionalUser.get().setId(2);
             service.create(userDTO);
         } catch(Exception ex) {
-            assertEquals(DataIntegratyViolationException.class, ex.getClass());
+            assertEquals(DataIntegrityViolationException.class, ex.getClass());
             assertEquals(EMAIL_JA_CADASTRADO_NO_SISTEMA, ex.getMessage());
         }
 
@@ -147,7 +147,7 @@ class UserServiceImplTest {
             optionalUser.get().setId(2);
             service.create(userDTO);
         } catch(Exception ex) {
-            assertEquals(DataIntegratyViolationException.class, ex.getClass());
+            assertEquals(DataIntegrityViolationException.class, ex.getClass());
             assertEquals(EMAIL_JA_CADASTRADO_NO_SISTEMA, ex.getMessage());
         }
 

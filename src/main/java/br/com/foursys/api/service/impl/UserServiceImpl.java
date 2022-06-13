@@ -4,7 +4,7 @@ import br.com.foursys.api.dto.UserDTO;
 import br.com.foursys.api.model.User;
 import br.com.foursys.api.repository.UserRepository;
 import br.com.foursys.api.service.UserService;
-import br.com.foursys.api.service.exceptions.DataIntegratyViolationException;
+import br.com.foursys.api.service.exceptions.DataIntegrityViolationException;
 import br.com.foursys.api.service.exceptions.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
 	private void findByEmail(UserDTO obj) {
 		Optional<User> user = repository.findByEmail(obj.getEmail());
 		if (user.isPresent() && !user.get().getId().equals(obj.getId())) {
-			throw new DataIntegratyViolationException("Email já cadastrado no sistema");
+			throw new DataIntegrityViolationException("Email já cadastrado no sistema");
 
 		}
 	}
